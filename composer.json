@@ -1,0 +1,13 @@
+{
+  "name": "maam/dong-calculator",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "MA-Mahmudi",
+      "email": "ma.mahmudi18@outlook.com"
+    }
+  ],
+  "require": {
+    "longman/telegram-bot": "^0.82.0"
+  }
+}
