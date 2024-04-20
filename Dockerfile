@@ -1,9 +1,9 @@
-FROM docker.arvancloud.ir/composer as builder
+FROM composer as builder
 WORKDIR /app/
 COPY ./composer.* ./
 RUN composer install --prefer-dist && composer dump-autoload
 
-FROM docker.arvancloud.ir/php:8.2.18-fpm-bullseye
+FROM php:8.2.18-fpm-bullseye
 
 RUN apt-get update -y && apt-get upgrade -y && apt-get install git libssl-dev -y
 # Install unzip utility and
