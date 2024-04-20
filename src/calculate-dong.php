@@ -28,7 +28,7 @@ function calculateDong(array $shares): array
 
                 $transferAmount = min(abs($negatives[$nKey]), $positives[$pKey]);
 
-                $resKey = $nKey . " به " . $pKey;
+                $resKey = $nKey . " => " . $pKey;
 
                 $res[$resKey] = $transferAmount;
 
