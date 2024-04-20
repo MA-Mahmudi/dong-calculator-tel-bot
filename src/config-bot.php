@@ -2,7 +2,7 @@
 
 require __DIR__ . '/../vendor/autoload.php';
 
-//require "./src/calculate-dong.php";
+require "./src/calculate-dong.php";
 
 use SergiX44\Nutgram\Nutgram;
 
@@ -18,10 +18,25 @@ try {
     });
 
     $bot->onMessage(function (Nutgram $bot) {
-        $bot->message();
-        $bot->sendMessage("asdfasdfasfas");
-
+        $message = $bot->message()->getText();
+        $temp = explode("\n", $message);
+        $res = [];
+        $resMessage = "";
+        foreach ($temp as $person) {
+            $temp2 = explode(":", $person);
+            $res[trim($temp2[0])] = trim($temp2[1]);
+        }
+        print_r($res);
+        $dongs = calculateDong($res);
+        print_r($dongs);
+        foreach ($dongs as $key => $value) {
+            if ($value != 0) {
+                $resMessage .= $key . ": " . $value . "\n";
+            }
+        }
+        $bot->sendMessage($resMessage);
     });
+
     $bot->run();
 
 } catch (\Psr\Container\NotFoundExceptionInterface|\Psr\Container\ContainerExceptionInterface $e) {

@@ -7,7 +7,8 @@ function calculateDong(array $shares): array
     $positives = [];
     $res = [];
 
-    $sharePerPerson = $total / count($shares);
+    $sharePerPerson = round($total / count($shares));
+    $res["دنگ هر نفر"] = $sharePerPerson;
 
     foreach ($shares as $key => $value) {
         $difference = $value - $sharePerPerson;
@@ -27,7 +28,7 @@ function calculateDong(array $shares): array
 
                 $transferAmount = min(abs($negatives[$nKey]), $positives[$pKey]);
 
-                $resKey = $nKey . " to " . $pKey;
+                $resKey = $nKey . " به " . $pKey;
 
                 $res[$resKey] = $transferAmount;
 
